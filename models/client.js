@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const candidat = require('./candidat');
 const Schema = mongoose.Schema;
 
 const clientSchema = new Schema({
@@ -96,14 +97,20 @@ const clientSchema = new Schema({
     },
     clientDocuments: [
         {
-            type: String,
-            trim: true,
+            documentName: {
+                type: String,
+                trim: true,
+            },
+            originalName: {
+                type: String,
+                trim: true
+            }
         }
     ],
     employeesWorkingUnder: [
         {
-            type: Schema.Types.ObjectId,
-            ref: 'candidat',
+            type: Schema.ObjectId,
+            ref: candidat,
         }
     ],
     clientArchived: {
@@ -113,6 +120,7 @@ const clientSchema = new Schema({
         }
     }
 }, { timestamps: true, versionKey: false });
+
 
 module.exports = mongoose.model('Client', clientSchema, 'client');
 

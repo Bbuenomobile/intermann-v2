@@ -1,0 +1,451 @@
+.bg-class {
+  background-color: #fe8700 !important;
+  margin: 15px 0px;
+  border-radius: 15px;
+  padding: 20px;
+}
+.top-pd {
+  padding: 15px 0px;
+}
+.stable img {
+  padding-right: 10px;
+}
+.logo-bg {
+  width: 130px;
+  height: 125px;
+  background: #C4C4C4;
+  border-radius: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo-bg img{
+  height: 70%;
+}
+.bg-btn {
+  background-color: #c4c4c4;
+  border-radius: 13px;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: -0.105991px;
+  text-transform: uppercase;
+}
+.btn-bgb {
+  background-color: #032339;
+  font-weight: 700;
+  font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 13px;
+line-height: 20px;
+letter-spacing: -0.105991px;
+text-transform: uppercase;
+border-radius: 25px;
+color: #FFFFFF;
+margin-top: 5px;
+}
+.btn-bgb img {
+  width: 20px;
+  margin-inline: 5px;
+}
+.btn-gray {
+  background-color: #c4c4c4;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 42px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 13px;
+  width: 242px;
+  height: 52px;
+}
+
+.end-class p {
+  margin-bottom: 0px !important;
+}
+.btn-email {
+  background-color: #b5b5be;
+  color: white;
+  border: 1px solid #000000;
+  width: 379px;
+  height: 50px;
+  box-sizing: border-box;
+  border-radius: 18px;
+}
+.btn-see {
+  background-color: #3f76e2;
+  color: white;
+  border: 1px solid #000000;
+  width: 379px;
+  height: 50px;
+  box-sizing: border-box;
+  border-radius: 18px;
+  margin-bottom: 5px;
+}
+.padding-email {
+  padding-right: 10px;
+}
+.padding-email img {
+  width: 10%;
+}
+
+.btn-whatsapp {
+  background-color: #489767;
+}
+.parent-p {
+  padding-top: 5px;
+}
+.parent-p p {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 26px;
+  text-decoration-line: underline;
+  padding-right: 10px;
+  color: #ffffff;
+}
+.blue-text {
+  color: #3f76e2 !important;
+}
+.btn:hover {
+  color: #ffffff;
+}
+.btn-black:hover {
+  color: #fe8700;
+}
+.parent-p span {
+  text-decoration-line: unset !important;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+  color: #ffffff;
+}
+.exp {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 29px;
+  line-height: 24px;
+}
+tbody {
+  background-color: white !important;
+}
+thead {
+  background-color: #c4c4c4;
+}
+.btn-upload {
+  background-color: #c4c4c4;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  margin-top: 5px;
+  padding: 5px;
+}
+.box-size {
+  width: 99%;
+  text-align: center;
+  border: 1px solid #ffff;
+  border-radius: 10px;
+  background: currentColor;
+}
+.box-size p {
+  color: #ffff;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 33px;
+  margin-bottom: 0px !important;
+}
+.child-p p {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 26px;
+  text-decoration-line: underline;
+  padding-right: 10px;
+  color: #ffffff;
+  margin-bottom: 0px;
+}
+.child-p span {
+  text-decoration-line: unset !important;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+  color: #ffff;
+}
+.btn-move {
+  background-color: #a461d8;
+  color: #ffff;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 16px;
+  padding: 18px;
+  border-radius: 8px;
+}
+.btn-red {
+  color: #ffff;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 16px;
+  padding: 18px;
+  border-radius: 8px;
+  background-color: #ff0000;
+}
+.btn-black {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 16px;
+  background-color: #032339;
+  color: #fe8700;
+  border-radius: 8px;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+}
+.btn-black img {
+  padding-right: 5px;
+  width: 20%;
+}
+.italic-font {
+  font-family: "Arial";
+  font-style: italic;
+  padding-top: 10px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 4px;
+  padding-left: 20px;
+}
+.card-xl p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px !important;
+  line-height: 31px;
+  color: #ffffff !important;
+  padding-top: 5px;
+}
+.btn:hover {
+  color: #212529;
+}
+.btn-bgb:hover {
+  color: #fe8700;
+}
+
+
+
+/* Client Progress Page */
+
+.litle-box{
+  background-color: #a461d8;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+.litle-box p{
+display: flex;
+align-items: center;
+margin-bottom: 0px;
+color: #ffff;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+}
+.btn-Contract{
+  background-color: #489767;
+  color: #ffff;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 16px;
+  padding: 18px 0px;
+  border-radius: 8px;
+}
+/* Signed Contract */
+
+.bg-Signed{
+  background: #489767;
+  border-radius: 13px;
+  font-weight: 700;
+  font-size: 13px;
+  color: #ffff;
+  line-height: 20px;
+  letter-spacing: -0.105991px;
+  text-transform: uppercase;
+}
+.Signed{
+  background-color:#489767;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 42px;
+  color: #ffffff;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  display: flex;
+  border-radius: 13px; 
+  padding: 0px 12px;
+
+}
+.litle-box-green{
+  background-color: #489767;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+ 
+/* todo see page doc */
+
+.pdf-btn{   background: #C4C4C4;
+  ;
+border-radius: 20px;
+padding: 10px;
+display: flex;
+align-items: center;
+margin-bottom: 10px;
+}
+.btn-contract{
+  background-color: #208FDC;
+  color: #ffff;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 16px;
+  padding: 5px 30px;
+  border-radius: 8px;
+}
+.poppins{
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #000000;
+  margin-bottom: 0px;
+}
+.btn-career{
+  padding: 12px 25;
+  background-color: #208FDC;
+  color: #ffff;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 16px;
+  padding: 5px 18px;
+  border-radius: 8px;
+}
+.btn-career img{
+  width: 50px;
+}
+.btn-grille{
+  padding: 12px 25;
+  background-color: #489767;
+  color: #ffff;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 16px;
+  padding: 2px 14px;
+  border-radius: 8px;
+}
+.pdf-store{
+  border: 2px solid #ffff;
+  background-color: #C4C4C4;
+  height: 400px;
+}
+.pdf-store p{
+  font-family: 'Arial';
+font-style: italic;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+color: #000000;
+}
+.pdf-store .row{
+display: flex;
+align-items: center;
+border-bottom: 1px solid black;
+}
+.pdf-store .col-3{
+text-align: end;
+}
+
+/* Archived View Page */
+
+
+.bg-return{
+  background: #FF0000;
+  border-radius: 13px;
+  border-radius: 13px;
+  font-weight: 700;
+  font-size: 13px;
+  color: #ffff;
+  line-height: 20px;
+  letter-spacing: -0.105991px;
+  text-transform: uppercase;
+  }
+  .ArchivedBtnLarge{
+      background: #FF0000;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 42px;
+      color: #ffffff;
+      border: 1px solid #000000;
+      box-sizing: border-box;
+      display: flex;
+      border-radius: 19px; 
+      padding: 0px 12px;
+  }
+  .litle-box-redBox .ArchivedSpent{
+      background-color: #FF0000;
+      border-radius: 8px;
+      padding: 0px;
+      margin-top: 0px;
+      margin-bottom: 20px;
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 24px;
+      color: #FFFFFF;
+    }
+    .litle-box-redBox {
+      background-color: #FF0000;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      
+    }
+     
+    .litle-box-redBox .classFont{
+      font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 23px;
+  color: #333333;
+    }
+    .Archived-XL p{
+      font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 25px;
+  color: #FFFFFF;
+  margin-bottom: 15px !important
+    }

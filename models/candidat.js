@@ -129,6 +129,18 @@ const candidatSchema = new Schema({
         enum: ["To-Do", "Pre-Selected", "In-Progress", "Archived"],
         default: "To-Do"
     },
+    candidatDocuments: [
+        {
+            documentName: {
+                type: String,
+                trim: true,
+            },
+            originalName: {
+                type: String,
+                trim: true
+            }
+        }
+    ],
     candidatArchived: {
         reason: {
             type: String,

@@ -2,6 +2,36 @@ const Candidat = require("../models/candidat");
 const bcrypt = require("bcryptjs");
 const client = require("../models/client");
 
+// Fetchers
+
+exports.getCandidatById = async (req, res, next) => {
+    const { candidatId
+    } = req.query;
+    console.log(candidatId)
+    Candidat.findById(candidatId).then(result => {
+        if (result) {
+            console.log(result)
+            return res.status(200).json({
+                status: true,
+                data: result
+            })
+        } else {
+            return res.status(400).json({
+                status: false,
+                data: result
+            })
+        }
+    })
+        .catch(err => {
+            console.log(err);
+            return res.status(400).json({
+                status: false,
+                data: result
+            })
+        })
+
+}
+
 exports.getCandidat = async (req, res, next) => {
     const data = req.query
     let query = {};
@@ -22,6 +52,36 @@ exports.getCandidat = async (req, res, next) => {
             total: 0,
             data: []
         })
+    }
+}
+
+// Document Uploaders
+exports.uploadCandidatDocuments = async (req, res, next) => {
+    console.log(req.file, req.body)
+    const { candidatId } = req.body;
+    if (req.file) {
+        await Candidat.findByIdAndUpdate(candidatId, {
+            $push: {
+                candidatDocuments: {
+                    documentName: req.file.filename,
+                    originalName: req.file.originalname
+                }
+            }
+        })
+            .then(uploadRes => {
+                return res.status(200).json({
+                    status: true,
+                    fileName: req.file.originalname,
+                    message: 'File Uploaded Successfully!'
+                })
+            })
+            .catch(err => {
+                console.log(err)
+                return res.status(400).json({
+                    status: false,
+                    message: 'Upload Failed!'
+                })
+            })
     }
 }
 
@@ -182,7 +242,7 @@ exports.viewAllToDoCadidats = async (req, res, next) => {
     try {
         let candidates = await Candidat.find({
             candidatStatus: "To-Do"
-        }).exec();
+        }).sort({ createdAt: -1 }).exec();
         if (!candidates) {
             res.status(400).send("No Data Found!");
         } else {

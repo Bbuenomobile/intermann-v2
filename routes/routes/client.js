@@ -23,10 +23,11 @@ router.post("/moveClientToInProgress", auth, clientController.moveClientInProgre
 router.post("/moveClientToArchived", auth, clientController.moveClientToArchived);
 router.post("/moveClientToSigned", auth, clientController.moveClientToSigned);
 
-
 router.get("/getClients", auth, clientController.getClients);
 router.get("/getClientByName", auth, clientController.getClientByName);
 router.get("/getClientByNameAndJob", auth, clientController.clientNameAndJobCheck);
+router.get("/clientRecommendations", auth, clientController.fetchClientsRecommendations);
+
 
 router.get("/allToDoClients", auth, clientController.viewAllToDoClients);
 router.get("/allInProgressClients", auth, clientController.viewAllInProgressClients);

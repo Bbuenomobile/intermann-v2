@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const candidatController = require("../../controllers/candidat");
 const { auth } = require("../../middleware/auth");
+var path = require('path');
 
 const multer = require('multer')
 
@@ -10,7 +11,7 @@ var storage = multer.diskStorage({
     },
     filename: (req, file, cb) => {
         console.log('file-', file)
-        cb(null, file.fieldname + '-' + Date.now() + ".jpg")
+        cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname))
     }
 });
 
@@ -21,8 +22,10 @@ router.post("/addCandidat", auth, candidatController.addCandidat);
 
 router.get("/checkCandidatName", auth, candidatController.candidatNameCheck);
 router.get("/getCandidats", auth, candidatController.getCandidat);
+router.get("/getCandidatById", auth, candidatController.getCandidatById);
 
-
+// Uploaders
+router.post("/uploadCandidatDocuments", auth, upload.single("document"), candidatController.uploadCandidatDocuments);
 
 // Getters
 router.get("/getCounts", auth, candidatController.getCounts);

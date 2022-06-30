@@ -40,6 +40,25 @@ const transporter = nodemailer.createTransport({
 
 });
 
+
+exports.fetchClientsRecommendations = async (req, res, next) => {
+    const { candidatSector } = req.query
+
+    let results = await Client.find({ clientActivitySector: candidatSector }).exec()
+    if (results) {
+        console.log(results)
+        return res.status(200).json({
+            status: true,
+            data: results
+        })
+    } else {
+        return res.status(400).json({
+            status: false,
+            data: []
+        })
+    }
+}
+
 exports.sendCountsToEmail = async (req, res, next) => {
 
     let ts = Date.now();
@@ -295,13 +314,15 @@ exports.viewAllSignedClients = async (req, res, next) => {
     try {
         let clients = await Client.find({
             jobStatus: "Signed Contract"
-        }).exec();
+        }).populate('employeesWorkingUnder')
+            .exec();
         if (!clients) {
             res.status(400).send("No Data Found!");
         } else {
             res.status(200).json(clients);
         }
     } catch (err) {
+        console.log(err)
         res.status(500).send("Fetch Error!");
     }
 }
