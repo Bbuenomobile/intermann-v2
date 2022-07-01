@@ -23,7 +23,8 @@ router.post("/addCandidat", auth, candidatController.addCandidat);
 router.get("/checkCandidatName", auth, candidatController.candidatNameCheck);
 router.get("/getCandidats", auth, candidatController.getCandidat);
 router.get("/getCandidatById", auth, candidatController.getCandidatById);
-
+router.get("/renameDocument", auth, candidatController.renameCandidatDocument);
+router.get("/deleteDocument", auth, candidatController.deleteCandidatDocument);
 // Uploaders
 router.post("/uploadCandidatDocuments", auth, upload.single("document"), candidatController.uploadCandidatDocuments);
 
@@ -36,6 +37,7 @@ router.get("/allArchivedCandidats", auth, candidatController.viewAllArchivedCadi
 
 // Status Setters
 router.post("/moveToInProgress", auth, candidatController.moveToInProgress);
+router.post("/moveToPreSelected", auth, candidatController.moveToPreSelected);
 router.post("/moveToArchived", auth, candidatController.moveToArchived);
 
 // Editors

@@ -1,7 +1,7 @@
 const Candidat = require("../models/candidat");
 const bcrypt = require("bcryptjs");
 const client = require("../models/client");
-
+const fs = require("fs");
 // Fetchers
 
 exports.getCandidatById = async (req, res, next) => {
@@ -57,6 +57,7 @@ exports.getCandidat = async (req, res, next) => {
 
 // Document Uploaders
 exports.uploadCandidatDocuments = async (req, res, next) => {
+    console.log("*******************************");
     console.log(req.file, req.body)
     const { candidatId } = req.body;
     if (req.file) {
@@ -85,6 +86,59 @@ exports.uploadCandidatDocuments = async (req, res, next) => {
     }
 }
 
+exports.renameCandidatDocument = async (req, res, next) => {
+    const { documentId, documentName, candidatId } = req.query
+    console.log(documentId, documentName, candidatId);
+    Candidat.findByIdAndUpdate(candidatId, {
+        $pull: {
+            candidatDocuments: { _id: documentId }
+        }
+    })
+        .then(result => {
+            console.log(result)
+            var filePath = "uploads/" + documentName
+            fs.unlinkSync(filePath)
+            return res.status(200).json({
+                status: true,
+                doc: documentName,
+                message: 'Document Deleted Successfully!'
+            })
+        })
+        .catch(err => {
+            console.log(err)
+            return res.status(400).json({
+                status: false,
+                message: 'Document Delete Failed!'
+            })
+        })
+}
+
+exports.deleteCandidatDocument = async (req, res, next) => {
+    const { documentId, documentName, candidatId } = req.query
+    console.log(documentId, documentName, candidatId);
+    Candidat.findByIdAndUpdate(candidatId, {
+        $pull: {
+            candidatDocuments: { _id: documentId }
+        }
+    })
+        .then(result => {
+            console.log(result)
+            var filePath = "uploads/" + documentName
+            fs.unlinkSync(filePath)
+            return res.status(200).json({
+                status: true,
+                doc: documentName,
+                message: 'Document Deleted Successfully!'
+            })
+        })
+        .catch(err => {
+            console.log(err)
+            return res.status(400).json({
+                status: false,
+                message: 'Document Delete Failed!'
+            })
+        })
+}
 
 // GET Counts
 exports.getCounts = async (req, res, next) => {
@@ -285,6 +339,43 @@ exports.viewAllArchivedCadidats = async (req, res, next) => {
     } catch (err) {
         res.status(500).send("Fetch Error!");
     }
+}
+
+exports.moveToPreSelected = async (req, res, next) => {
+    console.log("Changing Candidat Status to Pre-Selected ...");
+    const { candidatId, clientId, reason } = req.body;
+    console.log(req.body)
+    const data = {
+        clientId: clientId,
+        reasonForPreSelection: reason
+    }
+    await Candidat.updateOne({
+        _id: candidatId
+    }, {
+        $set: {
+            candidatStatus: "Pre-Selected"
+        },
+        $push: {
+            candidatPreSelectedFor: data
+        }
+    })
+        .then(response => {
+            return res
+                .status(200)
+                .json({
+                    message: "Candidat Moved To Pre-Selected Successfully!",
+                    status: true
+                })
+        })
+        .catch(err => {
+            console.log(err);
+            return res
+                .status(400)
+                .json({
+                    message: "Update Not Successful, Try Again Later!",
+                    status: false
+                })
+        })
 }
 
 // Body Required

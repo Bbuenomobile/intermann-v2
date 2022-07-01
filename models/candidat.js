@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const client = require('./client');
 const Schema = mongoose.Schema;
 
 // 24 Fields
@@ -129,6 +130,18 @@ const candidatSchema = new Schema({
         enum: ["To-Do", "Pre-Selected", "In-Progress", "Archived"],
         default: "To-Do"
     },
+    candidatPreSelectedFor: [
+        {
+            clientId: {
+                type: Schema.ObjectId,
+                ref: client
+            },
+            reasonForPreSelection: {
+                type: String,
+                trim: true
+            }
+        }
+    ],
     candidatDocuments: [
         {
             documentName: {
