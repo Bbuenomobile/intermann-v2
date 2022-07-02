@@ -55,6 +55,34 @@ exports.getCandidat = async (req, res, next) => {
     }
 }
 
+exports.uploadCandidatImage = async (req, res, next) => {
+    console.log(req.file, req.body)
+    const { candidatId } = req.body;
+    if (req.file) {
+        var image = {
+            documentName: req.file.filename,
+            originalName: req.file.originalname
+        };
+        await Candidat.findByIdAndUpdate(candidatId, {
+            candidatPhoto: image
+        })
+            .then((reData) => {
+                return res.status(200).json({
+                    status: true,
+                    fileName: req.file.filename,
+                    message: 'Image Uploaded Successfully!'
+                })
+            })
+            .catch(err => {
+                console.log(err)
+                return res.status(200).json({
+                    status: false,
+                    message: 'Image Not Uploaded!'
+                })
+            })
+    }
+}
+
 // Document Uploaders
 exports.uploadCandidatDocuments = async (req, res, next) => {
     console.log("*******************************");

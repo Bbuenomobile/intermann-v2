@@ -85,8 +85,14 @@ const candidatSchema = new Schema({
         trim: true
     }],
     candidatPhoto: {
-        data: String,
-        contentType: String,
+        documentName: {
+            type: String,
+            trim: true,
+        },
+        originalName: {
+            type: String,
+            trim: true
+        }
     },
     candidatExperienceDetails: [{
         period: {

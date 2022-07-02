@@ -41,6 +41,7 @@ router.post("/moveToPreSelected", auth, candidatController.moveToPreSelected);
 router.post("/moveToArchived", auth, candidatController.moveToArchived);
 
 // Editors
+router.post("/uploadCandidatImage", auth, upload.single("image"), candidatController.uploadCandidatImage);
 router.post("/editToDoCandidat", auth, upload.single("image"), candidatController.editToDoCandidat);
 router.post("/editInProgressCandidat", auth, upload.single("image"), candidatController.editInProgressCandidat);
 router.post("/editArchivedCandidat", auth, upload.single("image"), candidatController.editArchivedCandidat);
