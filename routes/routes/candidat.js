@@ -29,9 +29,12 @@ router.get("/deleteDocument", auth, candidatController.deleteCandidatDocument);
 router.post("/uploadCandidatDocuments", auth, upload.single("document"), candidatController.uploadCandidatDocuments);
 
 // Getters
+
+
 router.get("/getCounts", auth, candidatController.getCounts);
 router.get("/viewCandidat", auth, candidatController.viewCandidat);
 router.get("/allToDoCandidats", auth, candidatController.viewAllToDoCadidats);
+router.get("/allPreSelectedCandidats", auth, candidatController.viewAllPreSelectedCadidats);
 router.get("/allInProgressCandidats", auth, candidatController.viewAllInProgressCadidats);
 router.get("/allArchivedCandidats", auth, candidatController.viewAllArchivedCadidats);
 

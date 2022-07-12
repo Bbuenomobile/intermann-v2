@@ -335,13 +335,29 @@ exports.viewAllToDoCadidats = async (req, res, next) => {
     }
 }
 
+exports.viewAllPreSelectedCadidats = async (req,res,next) => {
+    console.log("List All Pre-Selected Candidates ... ");
+    try {
+        let candidates = await Candidat.find({
+            candidatStatus: "Pre-Selected"
+        }).sort({ createdAt: -1 }).exec();
+        if (!candidates) {
+            res.status(400).send("No Data Found!");
+        } else {
+            res.status(200).json(candidates);
+        }
+    } catch (err) {
+        res.status(500).send("Fetch Error!");
+    }
+}
+
 // GET Request
 exports.viewAllInProgressCadidats = async (req, res, next) => {
     console.log("List All In-Progress Candidates ... ");
     try {
         let candidates = await Candidat.find({
             candidatStatus: "In-Progress"
-        }).exec();
+        }).sort({ createdAt: -1 }).exec();
         if (!candidates) {
             res.status(400).send("No Data Found!");
         } else {
@@ -358,7 +374,7 @@ exports.viewAllArchivedCadidats = async (req, res, next) => {
     try {
         let candidates = await Candidat.find({
             candidatStatus: "Archived"
-        }).exec();
+        }).sort({ createdAt: -1 }).exec();
         if (!candidates) {
             res.status(400).send("No Data Found!");
         } else {

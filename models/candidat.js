@@ -165,7 +165,7 @@ const candidatSchema = new Schema({
             type: String,
             trim: true
         }
-    }
+    },
 }, { timestamps: true, versionKey: false });
 
 module.exports = mongoose.model('Candidat', candidatSchema, 'candidat');
