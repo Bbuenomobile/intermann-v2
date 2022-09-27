@@ -16,7 +16,7 @@ function generateAccessToken(user) {
 
 //User Signs Up - Manually
 exports.Signup = async (req, res, next) => {
-    console.log("body", req.body);
+    //console.log("body", req.body);
 
     const {
         emailAddress,
@@ -27,7 +27,7 @@ exports.Signup = async (req, res, next) => {
         emailAddress: emailAddress,
     })
         .then((user) => {
-            console.log("user", user);
+            //console.log("user", user);
             if (user) {
                 return res
                     .status(400)
@@ -57,7 +57,7 @@ exports.Signup = async (req, res, next) => {
                                 });
                         })
                         .catch((err) => {
-                            console.log(err);
+                            //console.log(err);
                             return res
                                 .status(400)
                                 .json({
@@ -68,14 +68,14 @@ exports.Signup = async (req, res, next) => {
                         });
                 })
                 .catch((err) => {
-                    console.log(err);
+                    //console.log(err);
                     return res
                         .status(400)
                         .json({ error: "INTERNAL_SERVER", msg: err, status: false });
                 });
         })
         .catch((err) => {
-            console.log(err);
+            //console.log(err);
             return res.status(400).json({ msg: err, status: false });
         });
     ;
@@ -83,8 +83,9 @@ exports.Signup = async (req, res, next) => {
 
 
 exports.Signin = async (req, res, next) => {
+    //console.log(req.body);
     const { email, password } = req.body;
-    console.log(email, password);
+    //console.log(email, password);
     let emailAddress = email;
     const re = new RegExp(
         "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])+"
@@ -133,7 +134,7 @@ exports.Verify = async (req, res, next) => {
     let array = token.split(" ");
     const newToken = array[1];
 
-    console.log(token)
+    //console.log(token)
     if (!newToken) return res.status(401).send({ message: "Access Denied", status: 401 });
     try {
         const decoded = jwt.verify(newToken, config.jwt_secret_key);

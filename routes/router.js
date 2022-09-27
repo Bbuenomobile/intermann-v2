@@ -5,7 +5,10 @@ const routes = [
     'user',
     'candidat',
     'sectors-jobs',
-    'client'
+    'client',
+    'hiddenProfiles',
+    'hiddenLeads',
+    'contract'
 ]
 
 module.exports = {

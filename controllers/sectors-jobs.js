@@ -20,9 +20,9 @@ exports.fetchAllSectors = async (req, res, next) => {
 
 exports.fetchAllJobs = async (req, res, next) => {
     let { sector } = req.query;
-    console.log(sector);
+    //console.log(sector);
     const results = await ActivitySector.findOne({ sectorName: sector })
-    console.log(results);
+    //console.log(results);
     if (results?.jobs) {
         return res.status(200).json({
             message: "All Jobs Found!",
@@ -40,11 +40,11 @@ exports.fetchAllJobs = async (req, res, next) => {
 
 exports.checkSectorExists = async (req, res, next) => {
     const { sector } = req.query;
-    console.log(sector);
+    //console.log(sector);
     await ActivitySector.findOne({ sectorName: sector })
         .then((data) => {
             if (data) {
-                console.log(data);
+                //console.log(data);
                 return res.status(404).json({
                     message: "Sector Exists!",
                     status: false,
@@ -57,7 +57,7 @@ exports.checkSectorExists = async (req, res, next) => {
             }
         })
         .catch(err => {
-            console.log(err)
+            //console.log(err)
             return res.status(500).json({
                 message: "Cannot Check if Sector Exists!"
             })
@@ -66,8 +66,8 @@ exports.checkSectorExists = async (req, res, next) => {
 
 exports.checkJobExists = async (req, res, next) => {
     const { sector, job } = req.query;
-    console.log(req.query);
-    console.log(sector, job);
+    //console.log(req.query);
+    //console.log(sector, job);
     await ActivitySector.findOne({
         sectorName: sector, jobs: {
             $elemMatch: {
@@ -76,7 +76,7 @@ exports.checkJobExists = async (req, res, next) => {
         }
     })
         .then((data) => {
-            console.log(data);
+            //console.log(data);
             if (data) {
 
                 return res.status(404).json({
@@ -92,7 +92,7 @@ exports.checkJobExists = async (req, res, next) => {
                         }
                     }
                 }).then(savedData => {
-                    console.log(savedData);
+                    //console.log(savedData);
                     return res.status(200).json({
                         message: "Job is New! Added to the Sector.",
                         status: true
@@ -102,7 +102,7 @@ exports.checkJobExists = async (req, res, next) => {
             }
         })
         .catch(err => {
-            console.log(err)
+            //console.log(err)
             return res.status(500).json({
                 message: "Cannot Check if Job Exists!"
             })
@@ -110,7 +110,7 @@ exports.checkJobExists = async (req, res, next) => {
 }
 
 exports.updateSector = async (req, res, next) => {
-    console.log(req.body)
+    //console.log(req.body)
     const { currentName, newName } = req.body;
     await ActivitySector.findOneAndUpdate({
         sectorName: currentName
@@ -122,7 +122,7 @@ exports.updateSector = async (req, res, next) => {
     }, {
         arrayFilters: [{ 'job.associatedSector': currentName }]
     }).then(async data => {
-        console.log(data)
+        //console.log(data)
         if (data) {
             await Candidat.updateMany({
                 candidatActivitySector: currentName
@@ -136,14 +136,14 @@ exports.updateSector = async (req, res, next) => {
                         clientActivitySector: newName
                     })
                         .then((resultclient) => {
-                            console.log(resultclient);
+                            //console.log(resultclient);
                             return res.status(200).json({
                                 message: "Sector Renamed Successfully!",
                                 status: true,
                             })
                         })
                         .catch(err => {
-                            console.log(err)
+                            //console.log(err)
                             return res.status(404).json({
                                 message: "Sector Not Renamed!",
                                 status: false
@@ -159,12 +159,12 @@ exports.updateSector = async (req, res, next) => {
         }
     })
         .catch(err => {
-            console.log(err);
+            //console.log(err);
         })
 }
 
 exports.updateJob = async (req, res, next) => {
-    console.log(req.body)
+    //console.log(req.body)
     const { currentJobName, currentSectorName, newName } = req.body;
     let result = await ActivitySector.findOne({
         sectorName: currentSectorName
@@ -182,7 +182,7 @@ exports.updateJob = async (req, res, next) => {
         jobs: result
     })
         .then(async data => {
-            console.log(data)
+            //console.log(data)
             await Candidat.updateMany({
                 candidatJob: currentJobName
             }, {
@@ -216,7 +216,7 @@ exports.updateJob = async (req, res, next) => {
                 })
         })
         .catch(err => {
-            console.log(err)
+            //console.log(err)
             return res.status(404).json({
                 message: "Job Not Renamed!",
                 status: false
@@ -229,13 +229,13 @@ exports.saveSector = async (req, res, next) => {
         sectorName,
         jobs // going to be an Array;
     } = req.body;
-    console.log(req.body);
-    console.log(sectorName, jobs);
+    //console.log(req.body);
+    //console.log(sectorName, jobs);
     const sector = await ActivitySector.findOne({
         sectorName: sectorName
     });
 
-    console.log(sector)
+    //console.log(sector)
     if (sector) {
         return res.status(200).json({
             message: "Sector Already Exists!",
@@ -252,21 +252,21 @@ exports.saveSector = async (req, res, next) => {
             newSector
                 .save()
                 .then(resp => {
-                    console.log(resp);
+                    //console.log(resp);
                     return res.status(200).json({
                         message: "Activity Sector Added Successfully!",
                         status: true,
                     })
                 })
                 .catch(err => {
-                    console.log(err);
+                    //console.log(err);
                     return res.status(400).json({
                         message: "Error Adding this Activity Sector! Please Try Again",
                         statuts: false
                     })
                 })
         } catch (err) {
-            console.log(err);
+            //console.log(err);
             return res.status(400).json({
                 message: "Internal Error While Adding this Activity Sector! Please Try Again",
                 statuts: false

@@ -26,20 +26,20 @@ exports.getUsers = async (req, res, next) => {
 exports.deleteUser = async (req, res, next) => {
 
     const { userid } = req.body
-    console.log(userid)
+    //console.log(userid)
     try {
         await User.deleteOne({
             _id: userid,
         })
             .then(data => {
-                console.log("User Deleted!", data);
+                //console.log("User Deleted!", data);
                 return res.status(200).json({
                     status: true,
                     message: "User Removed Successfully!"
                 })
             })
             .catch(err => {
-                console.log(err);
+                //console.log(err);
                 return res.status(400).json({
                     status: false,
                     message: "Cannot Delete User!"
@@ -47,7 +47,7 @@ exports.deleteUser = async (req, res, next) => {
             })
 
     } catch (err) {
-        console.log(err);
+        //console.log(err);
         res.status(500).send("Error in Deleting...");
     }
 

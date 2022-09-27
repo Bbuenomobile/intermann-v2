@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
-const candidat = require('./candidat');
 const Schema = mongoose.Schema;
+const clientContract = require("./contractClient");
+require('./candidat');
+
 
 const clientSchema = new Schema({
     clientCompanyName: {
@@ -20,8 +22,14 @@ const clientSchema = new Schema({
         trim: true
     },
     clientPhoto: {
-        data: String,
-        contentType: String,
+        documentName: {
+            type: String,
+            trim: true,
+        },
+        originalName: {
+            type: String,
+            trim: true
+        }
     },
     clientActivitySector: {
         type: String,
@@ -104,13 +112,25 @@ const clientSchema = new Schema({
             originalName: {
                 type: String,
                 trim: true
+            },
+            folderName: {
+                type: String,
+                trim: true,
+            },
+            url: {
+                type: String,
+                trim: true,
+            },
+            file_public_id: {
+                type: String,
+                trim: true,
             }
         }
     ],
     employeesWorkingUnder: [
         {
             type: Schema.ObjectId,
-            ref: candidat,
+            ref: "Candidat",
         }
     ],
     clientArchived: {
@@ -118,6 +138,80 @@ const clientSchema = new Schema({
             type: String,
             trim: true
         }
+    },
+    note_cofac: {
+        type: Number,
+    },
+    leadOrigin: {
+        type: String,
+        trim: true,
+    },
+    salary_hours: [
+    {
+        hours: {
+        type: String,
+        trim: true
+    },
+    salaryPerHour: {
+        type: String,
+        trim: true
+    }
+    }
+    ],
+    rate_hours: [
+        {
+        hours: {
+            type: String,
+            trim: true,
+        },
+        ratePerHour: {
+            type: String,
+            trim: true,
+        }
+    }
+    ],
+    offerSent: {
+        type: Boolean,
+        default: false,
+    },
+    signatureSent: {
+        type: Boolean,
+        default: false,
+
+    },
+    contractSigned: {
+        type: Boolean,
+        default: false,
+
+    },
+    publicityStarted: {
+        type: Boolean,
+        default: false,
+
+    },
+    A1selected: {
+        type: Boolean,
+        default: false,
+
+    },
+    assuranceFaite: {
+        type: Boolean,
+        default: false,
+
+    },
+    agenceDeVoyage: {
+        type: Boolean,
+        default: false,
+
+    },
+    sispiDeclared: {
+        type: Boolean,
+        default: false,
+
+    },
+    clientContract: {
+        type: Schema.ObjectId,
+        ref: clientContract
     }
 }, { timestamps: true, versionKey: false });
 

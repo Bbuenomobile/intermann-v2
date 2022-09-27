@@ -6,20 +6,25 @@ const config = require("./config")
 const path = require("path");
 const port = process.env.PORT || 8080;
 const MONGODB_URI = config.mongoUrl;
+const nunjucks = require('nunjucks');
 const app = express();
 
 var http = require('http').Server(app);
 
 const router = require('./routes/router');
 
+
+
 app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+
 app.use("/static", express.static(path.join(__dirname, '/build/static')));
 
-app.use(express.static("uploads"))
+app.use("/uploads" ,express.static("uploads"))
 
 // app.use((req, res, next) => {
 //     res.setHeader("Content-Type", "image/png")
@@ -44,7 +49,7 @@ mongoose
         });
     })
     .catch(err => {
-        console.log(err);
+        //console.log(err);
     });
 
 
