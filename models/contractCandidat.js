@@ -75,6 +75,10 @@ const contractCandidatSchema = new Schema({
         type: String,
         trim: true,
     },
+    employee_hosting: {
+        type: String,
+        trim: true,
+    },
     heurePerSemaine: {
         type: String,
         trim: true,
@@ -98,6 +102,22 @@ const contractCandidatSchema = new Schema({
     candidatName: {
         type: String,
         trim: true,
+    },
+    signature: {
+        type: String,
+        trim: true,
+    },
+    contract_generated_on: {
+        type: String,
+        trim: true
+    },
+    contract_signed_on: {
+        type: String,
+        trim: true
+    },
+    signed_contract_url: {
+        type: String,
+        trim: true
     }
 })
 

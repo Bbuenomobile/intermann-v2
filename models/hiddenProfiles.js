@@ -140,7 +140,7 @@ const hiddenProfilesSchema = new Schema({
         {
             clientId: {
                 type: Schema.ObjectId,
-                ref: client
+                ref: () => client
             },
             reasonForPreSelection: {
                 type: String,

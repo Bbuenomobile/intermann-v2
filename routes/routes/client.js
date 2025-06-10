@@ -12,7 +12,7 @@ var storage = multer.diskStorage({
         cb(null, 'uploads')
     },
     filename: (req, file, cb) => {
-        //console.log('file-', file)
+        ////console.log('file-', file)
         cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname))
     }
 });
@@ -22,9 +22,14 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 router.post("/addClient", auth, clientController.addClient);
+router.post("/changeBudget", auth, clientController.changeJobTotalBudget);
 
 router.post("/uploadClientDocuments", auth, upload.single("document"), clientController.uploadClientDocuments);
+router.post("/uploadRapportDocuments", upload.single("document"), clientController.uploadRapportDocuments);
 router.post("/uploadClientImage", auth, upload.single("image"), clientController.uploadClientImage);
+router.post("/addClientLink", auth, clientController.addClientLink);
+router.post("/removeClientLink", auth, clientController.removeClientLink);
+router.post("/renameClientLink", auth, clientController.renameClientLink);
 
 router.get("/getClientsByPhoneNumber", auth, clientController.getClientsByPhoneNumber);
 
@@ -42,10 +47,11 @@ router.post("/moveClientToToDo", auth, clientController.moveClientToToDo);
 
 router.get("/switchClientAttributes", auth, clientController.switchAttributes);
 router.get("/getClients", auth, clientController.getClients);
+router.get("/getClientsForDocs", clientController.getClientsForDocs);
 router.get("/filterClients", auth, clientController.filterClients);
 router.get("/filterClientsByMissingEmailOrPhone", auth, clientController.filterClientsByMissingEmailorPhone);
 router.get("/filterClientsByAttributes", auth, clientController.filterClientsByAttributes);
-router.get("/getClientByName", auth, clientController.getClientByName);
+router.get("/getClientByName", clientController.getClientByName);
 router.get("/getClientById", auth, clientController.getClientById);
 router.get("/getClientDetailsById", clientController.getClientDetailsById); // public route
 router.get("/getClientByNameAndJob", auth, clientController.clientNameAndJobCheck);

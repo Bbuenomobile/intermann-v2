@@ -8,7 +8,15 @@ const routes = [
     'client',
     'hiddenProfiles',
     'hiddenLeads',
-    'contract'
+    'contract',
+    'representence',
+    'avance',
+    'ad',
+    'lead',
+    'commerce',
+    'billing',
+    'offer',
+    'customDocument'
 ]
 
 module.exports = {

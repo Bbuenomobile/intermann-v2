@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const clientContract = require("./contractClient");
-require('./candidat');
+const Candidat = require('./candidat');
 
 
 const clientSchema = new Schema({
@@ -27,6 +27,14 @@ const clientSchema = new Schema({
             trim: true,
         },
         originalName: {
+            type: String,
+            trim: true
+        },
+        url: {
+            type: String,
+            trim: true,
+        },
+        file_public_id: {
             type: String,
             trim: true
         }
@@ -130,7 +138,7 @@ const clientSchema = new Schema({
     employeesWorkingUnder: [
         {
             type: Schema.ObjectId,
-            ref: "Candidat",
+            ref: () => Candidat,
         }
     ],
     clientArchived: {
@@ -211,8 +219,24 @@ const clientSchema = new Schema({
     },
     clientContract: {
         type: Schema.ObjectId,
-        ref: clientContract
-    }
+        ref: () => clientContract
+    },
+    clientLinks: [
+        {
+            link: {
+                type: String,
+                trim: true
+            },
+            folder: {
+                type: String,
+                trim: true
+            },
+            displayName: {
+                type: String,
+                trim: true
+            }
+        }
+    ]
 }, { timestamps: true, versionKey: false });
 
 

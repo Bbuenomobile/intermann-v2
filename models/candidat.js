@@ -19,7 +19,6 @@ const candidatSchema = new Schema({
     },
     candidatAddress: {
         type: String,
-        required: true,
         trim: true
     },
     candidatActivitySector: {
@@ -93,7 +92,16 @@ const candidatSchema = new Schema({
         originalName: {
             type: String,
             trim: true
+        },
+        url: {
+            type: String,
+            trim: true,
+        },
+        file_public_id: {
+            type: String,
+            trim: true
         }
+
     },
     candidatExperienceDetails: [{
         period: {
@@ -127,21 +135,18 @@ const candidatSchema = new Schema({
     ],
     enteredBy: {
         type: String,
-        required: true,
         trim: true
     },
     candidatStatus: {
         type: String,
-        required: true,
         trim: true,
-        enum: ["To-Do", "Pre-Selected", "In-Progress", "Archived"],
-        default: "To-Do"
+        default: "New"
     },
     candidatPreSelectedFor: [
         {
             clientId: {
                 type: Schema.ObjectId,
-                ref: client
+                ref: () => client,
             },
             reasonForPreSelection: {
                 type: String,
@@ -159,6 +164,10 @@ const candidatSchema = new Schema({
                 type: String,
                 trim: true
             },
+            folderName: {
+                type: String,
+                trim: true
+            },
             url: {
                 type: String,
                 trim: true,
@@ -169,6 +178,20 @@ const candidatSchema = new Schema({
             }
         }
     ],
+    candidatLinks: [{
+        link: {
+            type: String,
+            trim: true
+        },
+        folder: {
+            type: String,
+            trim: true
+        },
+        displayName: {
+            type: String,
+            trim: true
+        }
+    }],
     candidatArchived: {
         reason: {
             type: String,
@@ -177,8 +200,40 @@ const candidatSchema = new Schema({
     },
     candidatContract: {
         type: Schema.ObjectId,
-        ref: contractCandidat
-    }
+        ref: () => contractCandidat
+    },
+    iban_euro: {
+        type: String,
+        trim: true
+    },
+    bankName_euro: {
+        type: String,
+        trim: true
+    },
+    iban_ron_lei: {
+        type: String,
+        trim: true
+    },
+    bankName_lei: {
+        type: String,
+        trim: true
+    },
+    leadNotes: {
+        type: String,
+        trim: true,
+    },
+    agencyNotes: {
+        type: String,
+        trim: true
+    },
+    transferredToRIS: {
+        type: Boolean,
+        default: false
+    },
+    reasonByRisForNotSelecting: {
+        type: String,
+        trim: true
+    },
 }, { timestamps: true, versionKey: false });
 
 module.exports = mongoose.model('Candidat', candidatSchema, 'candidat');

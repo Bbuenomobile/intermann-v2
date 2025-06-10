@@ -3,12 +3,12 @@ const Candidat = require("../models/candidat");
 
 
 exports.hideCandidatProfile = async (req,res,next) => {
-    //console.log('hiding candidat...', req.body);
+    ////console.log('hiding candidat...', req.body);
     const { candidatId } = req.body;
     Candidat.findByIdAndRemove(candidatId)
     .then((result) => {
-        //console.log("-----------------------");
-        //console.log(result.candidatName);
+        ////console.log("-----------------------");
+        ////console.log(result.candidatName);
         const hp = new hiddenProfiles({
             candidatName: result.candidatName,
             candidatEmail: result.candidatEmail,
@@ -39,13 +39,13 @@ exports.hideCandidatProfile = async (req,res,next) => {
             candidatArchived: result.candidatArchived,
         });
         hp.save().then((resSave) => {
-            //console.log(resSave)
+            ////console.log(resSave)
             return res.status(200).json({
                 status: true,
                 message: 'Candidat Hidden Successfully!'
             })
         }).catch(err => {
-            //console.log(err)
+            ////console.log(err)
             return res.status(400).json({
                 status: false,
                 message: 'Cannot Hide Candidat! Try Again.'

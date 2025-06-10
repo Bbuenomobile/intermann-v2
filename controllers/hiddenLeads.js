@@ -3,12 +3,12 @@ const Client = require("../models/client");
 
 
 exports.hideClientProfile = async (req,res,next) => {
-    //console.log('hiding client...', req.body);
+    ////console.log('hiding client...', req.body);
     const { clientId } = req.body;
     Client.findByIdAndRemove(clientId)
     .then((result) => {
-        //console.log("-----------------------");
-        //console.log(result);
+        ////console.log("-----------------------");
+        ////console.log(result);
         const hl = new hiddenLeads({
             clientArchived: result.clientArchived,
             salary_hours: result.salary_hours,
@@ -47,13 +47,13 @@ exports.hideClientProfile = async (req,res,next) => {
   clientDocuments: [],
         });
         hl.save().then((resSave) => {
-            //console.log(resSave)
+            ////console.log(resSave)
             return res.status(200).json({
                 status: true,
                 message: 'Client Hidden Successfully!'
             })
         }).catch(err => {
-            //console.log(err)
+            ////console.log(err)
             return res.status(400).json({
                 status: false,
                 message: 'Cannot Hide Client! Try Again.'

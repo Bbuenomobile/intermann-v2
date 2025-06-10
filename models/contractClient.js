@@ -123,10 +123,122 @@ const contractClientSchema = new Schema({
         type: String,
         trim: true
     },
+    worker_number_9: {
+        type: String,
+        trim: true
+    },
+    worker_name_9: {
+        type: String,
+        trim: true
+    },
+    worker_number_10: {
+        type: String,
+        trim: true
+    },
+    worker_name_10: {
+        type: String,
+        trim: true
+    },
+    worker_number_11: {
+        type: String,
+        trim: true
+    },
+    worker_name_11: {
+        type: String,
+        trim: true
+    },
+    worker_number_12: {
+        type: String,
+        trim: true
+    },
+    worker_name_12: {
+        type: String,
+        trim: true
+    },
+    worker_number_13: {
+        type: String,
+        trim: true
+    },
+    worker_name_13: {
+        type: String,
+        trim: true
+    },
+    worker_number_14: {
+        type: String,
+        trim: true
+    },
+    worker_name_14: {
+        type: String,
+        trim: true
+    },
+    worker_number_15: {
+        type: String,
+        trim: true
+    },
+    worker_name_15: {
+        type: String,
+        trim: true
+    },
+    worker_number_16: {
+        type: String,
+        trim: true
+    },
+    worker_name_16: {
+        type: String,
+        trim: true
+    },
+    worker_number_17: {
+        type: String,
+        trim: true
+    },
+    worker_name_17: {
+        type: String,
+        trim: true
+    },
+    worker_number_18: {
+        type: String,
+        trim: true
+    },
+    worker_name_18: {
+        type: String,
+        trim: true
+    },
+    worker_number_19: {
+        type: String,
+        trim: true
+    },
+    worker_name_19: {
+        type: String,
+        trim: true
+    },
+    worker_number_20: {
+        type: String,
+        trim: true
+    },
+    worker_name_20: {
+        type: String,
+        trim: true
+    },
     clientId: {
         type: String,
         trim: true
     },
+    signature: {
+        type: String,
+        trim: true
+    },
+    contract_generated_on: {
+        type: String,
+        trim: true
+    },
+    contract_signed_on: {
+        type: String,
+        trim: true
+    },
+    signed_contract_url: {
+        type: String,
+        trim: true
+    }
 })
 
 module.exports = mongoose.model('contractClient', contractClientSchema, 'contractClient');

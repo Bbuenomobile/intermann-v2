@@ -117,7 +117,7 @@ const hiddenLeadSchema = new Schema({
     employeesWorkingUnder: [
         {
             type: Schema.ObjectId,
-            ref: "Candidat",
+            ref: () => Candidat,
         }
     ],
     clientArchived: {
